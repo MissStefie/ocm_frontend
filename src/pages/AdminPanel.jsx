@@ -100,7 +100,7 @@ export default function AdminPanel() {
 
   const fetchRegisters = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/register");
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/register`);
       setRows(response.data);
     } catch (error) {
       console.error("Error al obtener registros:", error);
@@ -174,7 +174,7 @@ export default function AdminPanel() {
       try {
         if (isEditing) {
           await axios.put(
-            `http://localhost:4000/register/${selectedRow.id}`,
+            `${process.env.REACT_APP_API_URL}/register/${selectedRow.id}`,
             values
           );
           setRows((prevRows) =>
@@ -184,7 +184,7 @@ export default function AdminPanel() {
           );
         } else {
           const response = await axios.post(
-            "http://localhost:4000/register",
+            `${process.env.REACT_APP_API_URL}/register`,
             values
           );
           setRows((prev) => [...prev, response.data]);
@@ -198,7 +198,7 @@ export default function AdminPanel() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/register/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/register/${id}`);
       fetchRegisters();
     } catch (error) {
       console.error("Error al eliminar el registro:", error);

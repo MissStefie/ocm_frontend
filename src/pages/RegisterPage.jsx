@@ -49,7 +49,7 @@ export default function RegisterPage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/register",
+        `${process.env.REACT_APP_API_URL}/register`,
         registerData
       );
       console.log("Registro exitoso:", response.data);
