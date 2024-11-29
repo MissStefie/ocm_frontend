@@ -1,0 +1,10 @@
+.notFoundTitle {
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
