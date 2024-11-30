@@ -35,7 +35,8 @@ export default function RegisterPage() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState(null);
-  const urlBackend = process.env.REACT_APP_API_URL;
+  console.log("ENV:", import.meta.env);
+  const urlBackend = import.meta.env.VITE_API_URL;
   console.log(`Esta es la URL del backend: ${urlBackend}`);
 
   const handleSubmit = async (values) => {
@@ -49,12 +50,12 @@ export default function RegisterPage() {
     const { name, email, tel, num_people } = formData;
     const registerData = { name, email, tel, num_people };
 
-    const urlBackendPOST = `${process.env.REACT_APP_API_URL}/register`;
+    const urlBackendPOST = `${import.meta.env.VITE_API_URL}/register`;
     console.log(`Esta es la URL del backend haciendo POST: ${urlBackendPOST}`);
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/register`,
+        `${import.meta.env.VITE_API_URL}/register`,
         registerData
       );
       console.log("Registro exitoso:", response.data);
