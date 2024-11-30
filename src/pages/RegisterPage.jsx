@@ -35,7 +35,7 @@ export default function RegisterPage() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState(null);
-  const urlBackend = `${process.env.REACT_APP_API_URL}`;
+  const urlBackend = process.env.REACT_APP_API_URL;
   console.log(`Esta es la URL del backend: ${urlBackend}`);
 
   const handleSubmit = async (values) => {
