@@ -16,11 +16,11 @@ const validationSchema = Yup.object({
     .required("El nombre es obligatorio")
     .min(2, "El nombre ingresado es inválido"),
   email: Yup.string()
-    .email("El correo electrónico no es válido")
+    .email("Por favor, ingresa un correo electrónico válido")
     .required("El correo es obligatorio")
     .matches(
-      /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
-      "El correo debe ser de dominio gmail.com"
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      "Por favor, ingresa un correo electrónico válido."
     ),
   tel: Yup.string()
     .required("El teléfono es obligatorio")
@@ -187,7 +187,7 @@ export default function RegisterPage() {
                 type="email"
                 id="email"
                 name="email"
-                placeholder="correo@gmail.com"
+                placeholder="correo@ejemplo.com"
                 className="form-input"
               />
             </div>
@@ -251,6 +251,13 @@ export default function RegisterPage() {
         overlayClassName="modal-overlay"
       >
         <h2>¿Estás seguro de que quieres registrarte?</h2>
+        <h2>¡RECUERDA! Es un evento gratuito y te pedimos que puedas asegurar tu asistencia y la de tus acompañantes para no dejar ningún lugar vacío. 
+
+En el día se te estará escribiendo para confirmar la asistencia una vez más.
+
+Se pide llegar con treinta minutos de antelación, a modo de acomodarse correctamente en los lugares.
+
+¡Muchas gracias!</h2>
         <div>
           <button onClick={confirmRegistration} disabled={isProcessing}>
             {isProcessing ? "Procesando..." : "Aceptar"}
